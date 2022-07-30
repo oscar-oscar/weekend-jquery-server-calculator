@@ -12,7 +12,7 @@ function readyNow() {
 
 // $('#divide-button').on('click', divideNumber);
 
-// $('#submit-button').on('click', submitEquation);
+ $('#submit-button').on('click', submitEquation);
 
 // $('#clear-button').on('click', clearEquation);
 
@@ -22,8 +22,8 @@ getEquationList();
 
 function getEquationList(){ //no arguments
     $.ajax({
-        type: 'GET', //app.get
-        url: '/equations' // '/artist' within app.get
+        type: 'GET', 
+        url: '/equations' 
     }).then(function (response) {
         console.log(response);
         $('#equation-history').empty();
@@ -41,6 +41,22 @@ function getEquationList(){ //no arguments
 
 }
 
+function submitEquation() {
+    console.log('in submitEquation');
+    $.ajax({
+      type: 'POST',
+      url: '/equations',
+      data: {
+        firstNumber: $('#input-one').val(),
+        secondNumber: $('#input-two').val(),
+    }
+    }).then(function(response) {
+      console.log(response);
+      //alert(response);
+      getEquationList();
+    }); // .catch goes here 
+  }
 
+  
 
 

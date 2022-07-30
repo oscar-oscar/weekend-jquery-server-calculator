@@ -11,13 +11,7 @@ app.use(express.urlencoded());
 // Serve up static files (HTML, CSS, Client JS)
 app.use(express.static('server/public'));
 
-const equationList = [
-    
-        
-        
-   
-    
-  ]
+const equationList = [];
 
 
 app.get('/equations', (req, res) => {
@@ -29,7 +23,7 @@ app.post('/equations', (req, res) => {
     const calculation = req.body; //body of the request data property in sendEquations
     console.log(req.body);
     equationList.push(calculation);
-        
+    
 
 })
 
