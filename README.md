@@ -13,3 +13,8 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
 - [x] create .gitgnore file
 - [x] create folder structure
 - [x] no package json is available so install express with init --yes and npm install express afterwards
+- [x] add start script to package.json
+- [x] create express app and declare port to use
+- [x] add app.listen to bottom of server js
+- [x]  add app.use for static files (html, css, js)
+- [x] add body parser for posts
