@@ -12,3 +12,4 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
 ## Checklist
 - [x] create .gitgnore file
 - [x] create folder structure
+- [x] no package json is available so install express with init --yes and npm install express afterwards
