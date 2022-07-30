@@ -11,4 +11,4 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
 
 ## Checklist
 - [x] create .gitgnore file
-- [ ] create folder structure
+- [x] create folder structure
