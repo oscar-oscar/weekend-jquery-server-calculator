@@ -12,22 +12,11 @@ app.use(express.urlencoded());
 app.use(express.static('server/public'));
 
 const equationList = [
-    {
-        equationProp: 12 - 4 === 8,
+    
         
-    },
-    {
-        equationProp: 15 * 3 === 45,
         
-    },
-    {
-        equationProp: 4 + 1 === 5,
-        
-    },
-    {
-        equationProp: 42 / 2 === 21,
-        
-    },
+   
+    
   ]
 
 
@@ -35,6 +24,14 @@ app.get('/equations', (req, res) => {
     
     res.send(equationList);
 });
+
+app.post('/equations', (req, res) => {
+    const calculation = req.body; //body of the request data property in sendEquations
+    console.log(req.body);
+    equationList.push(calculation);
+        
+
+})
 
 app.listen(PORT, () => {
     console.log ('Server is running on port', PORT);

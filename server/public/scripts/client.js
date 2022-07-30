@@ -38,7 +38,9 @@ function getEquationList(){ //no arguments
             `);
         }
     });
+
 }
+
 
 
 
