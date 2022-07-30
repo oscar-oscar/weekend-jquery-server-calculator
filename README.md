@@ -18,5 +18,9 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
 - [x] add app.listen to bottom of server js
 - [x]  add app.use for static files (html, css, js)
 - [x] add body parser for posts
-- [] format html to start interface build
-- 
+- [x] format html to start interface build
+- [x] setup click hanlders in client.js
+- [ ] setup input values in js
+- [ ] add equation list with place holder data
+- []  create GET route for /equation to see array list of equations
+- [] display equation list via AJAX on client side
