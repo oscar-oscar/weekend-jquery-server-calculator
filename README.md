@@ -18,3 +18,5 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
 - [x] add app.listen to bottom of server js
 - [x]  add app.use for static files (html, css, js)
 - [x] add body parser for posts
+- [] format html to start interface build
+- 
