@@ -4,17 +4,17 @@ function readyNow() {
     console.log('jQuery ready!');
 
 
-// $('#addition-button').on('click', addNumber);
+$('#addition-button').on('click', addNumbers);
 
-// $('#subtract-button').on('click', subtractNumber);
+$('#subtract-button').on('click', subtractNumbers);
 
-// $('#multiply-button').on('click', multipyNumber);
+$('#multiply-button').on('click', multipyNumbers);
 
-// $('#divide-button').on('click', divideNumber);
+$('#divide-button').on('click', divideNumbers);
 
  $('#submit-button').on('click', submitEquation);
 
-// $('#clear-button').on('click', clearEquation);
+$('#clear-button').on('click', clearInputs);
 
 getEquationList();
 
@@ -57,6 +57,24 @@ function submitEquation() {
     }); // .catch goes here 
   }
 
-  
+  function addNumbers(){
+    console.log('in addNumbers for + button');
+  }
+
+  function subtractNumbers(){
+    console.log('in subtractNumbers for - button');
+  }
+
+  function multipyNumbers(){
+    console.log('in multiplyNumbers for * button');
+  }
+
+  function divideNumbers(){
+    console.log('in divideNumbers for / button');
+  }
+
+  function clearInputs(){
+    console.log('in clearInputs for C button');
+  }
 
 
