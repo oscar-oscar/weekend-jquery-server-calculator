@@ -12,10 +12,11 @@ $('#multiply-button').on('click', multipyNumber);
 
 $('#divide-button').on('click', divideNumber);
 
-$('#equation-button').on('click', enterEquation);
+$('#submit-button').on('click', submitEquation);
 
 $('#clear-button').on('click', clearEquation);
 
-
-
 }
+
+
+
