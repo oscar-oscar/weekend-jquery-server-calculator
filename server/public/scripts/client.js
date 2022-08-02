@@ -12,69 +12,83 @@ $('#multiply-button').on('click', multipyNumbers);
 
 $('#divide-button').on('click', divideNumbers);
 
- $('#submit-button').on('click', submitEquation);
+ $('#submit-button').on('click', submitCalculation);
 
 $('#clear-button').on('click', clearInputs);
 
-getEquationList();
+//getCalculationList();
 
 }
 
-function getEquationList(){ //no arguments
+function getCalculationList(){ //no arguments
     $.ajax({
         type: 'GET', 
-        url: '/equations' 
+        url: '/calculations'
     }).then(function (response) {
         console.log(response);
-        $('#equation-history').empty();
+        $('#calculation-history').empty();
         for (let i = 0; i < response.length; i++) {
-            let equation = response[i];
-            $('#equation-history').append(`
-                <tr>
-                    <td>${equation.equationProp}</td>
-                    <td>${equation.equationProp}</td>
-                    <td>${equation.equationProp}</td>
-                </tr>
+            let calculation = response[i];
+            $('#calculation-history').append(`
+              
+            <li>${calculation.inputA}${calculation.operator} ${calculation.inputB}${calculation.calcResult}</li>
+                       
             `);
         }
     });
 
 }
 
-function submitEquation() {
-    console.log('in submitEquation');
+let operator = '';
+let inputA = '';
+let inputB = '';
+
+function submitCalculation() {
+    console.log('in submitCalculation');
     $.ajax({
       type: 'POST',
-      url: '/equations',
+      url: '/calculations',
       data: {
-        firstNumber: $('#input-one').val(),
-        secondNumber: $('#input-two').val(),
+        inputA: $('#input-one').val(),
+        inputB: $('#input-two').val(),
+        operator: operator
     }
     }).then(function(response) {
-      console.log(response);
+      console.log('calculations:',response);
       //alert(response);
-      getEquationList();
+      getCalculationList();
     }); // .catch goes here 
   }
 
+//when + button is pressed this function will run
   function addNumbers(){
     console.log('in addNumbers for + button');
+    operator = '+';
+    
   }
-
+//when - button is clicked this function will run
   function subtractNumbers(){
     console.log('in subtractNumbers for - button');
+    operator = '-';
   }
-
+//when * button is clicked this function will run
   function multipyNumbers(){
     console.log('in multiplyNumbers for * button');
+    operator = '*';
   }
-
+//when / button is clicked this function will run
   function divideNumbers(){
     console.log('in divideNumbers for / button');
+    operator = '/';
   }
 
   function clearInputs(){
     console.log('in clearInputs for C button');
+    $('#input-one').val('');
+    $('#input-two').val('');
+    
+
   }
 
 
+  

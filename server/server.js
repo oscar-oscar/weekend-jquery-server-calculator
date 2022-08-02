@@ -11,18 +11,44 @@ app.use(express.urlencoded());
 // Serve up static files (HTML, CSS, Client JS)
 app.use(express.static('server/public'));
 
-const equationList = [];
+const calculationList = [ {
+    inputA: 1,
+    inputB: 2,
+    operator: '+',
+    result: 3,
+
+}];
 
 
-app.get('/equations', (req, res) => {
-    
-    res.send(equationList);
+
+
+app.get('/calculations', (req, res) => {
+    res.send(calculationList);
 });
 
-app.post('/equations', (req, res) => {
-    const calculation = req.body; //body of the request data property in sendEquations
+app.post('/calculations', (req, res) => {
+    const calculation= req.body; //body of the request data property in submitCalculation
     console.log(req.body);
-    equationList.push(calculation);
+    let result = 0;
+    
+    if(req.body.operator === '+') {
+        result = calculation.inputA + calculation.inputB;
+      }
+      if(req.body.operator === '-') {
+        result = calculation.inputA - calculation.inputB;
+      }
+      if(req.body.operator === '*') {
+        result = calculation.inputA + calculation.inputB;
+      }
+      if(req.body.operator === '/') {
+        result = calculation.inputA / calculation.inputB;
+      }
+
+
+    calculationList.push(calculation);
+    res.send(calculation);
+    res.sendStatus(200); 
+    
     
 
 })
@@ -32,3 +58,4 @@ app.listen(PORT, () => {
   })
 
 
+ 
