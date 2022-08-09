@@ -12,10 +12,10 @@ app.use(express.urlencoded());
 app.use(express.static('server/public'));
 
 const calculationList = [{
-    inputA: 1,
-    inputB: 2,
-    operator: '+',
-    result: 3,
+    inputA: 0,
+    inputB: 0,
+    operator: '*',
+    result: 0,
 
 }];
 
@@ -40,11 +40,8 @@ app.post('/calculations', (req, res) => {
         calculation.result = Number(calculation.inputA) / Number(calculation.inputB);
     }
 
- calculationList.push(calculation);   
- res.send(calculation);
-
-
-
+    calculationList.push(calculation);
+    res.send(calculation);
 
 })
 

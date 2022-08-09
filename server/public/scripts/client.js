@@ -4,25 +4,25 @@ function readyNow() {
     console.log('jQuery ready!');
 
 
-$('#addition-button').on('click', addNumbers);
+    $('#addition-button').on('click', addNumbers);
 
-$('#subtract-button').on('click', subtractNumbers);
+    $('#subtract-button').on('click', subtractNumbers);
 
-$('#multiply-button').on('click', multiplyNumbers);
+    $('#multiply-button').on('click', multiplyNumbers);
 
-$('#divide-button').on('click', divideNumbers);
+    $('#divide-button').on('click', divideNumbers);
 
- $('#submit-button').on('click', submitCalculation);
+    $('#submit-button').on('click', submitCalculation);
 
-$('#clear-button').on('click', clearInputs);
+    $('#clear-button').on('click', clearInputs);
 
-getCalculationList();
+    getCalculationList();
 
 }
 
-function getCalculationList(){ //no arguments
+function getCalculationList() { //no arguments
     $.ajax({
-        type: 'GET', 
+        type: 'GET',
         url: '/calculations'
     }).then(function (response) {
         console.log(response);
@@ -30,9 +30,8 @@ function getCalculationList(){ //no arguments
         for (let i = 0; i < response.length; i++) {
             let calculation = response[i];
             $('#calculation-history').append(`
-              
-            <li>${calculation.inputA} ${calculation.operator} ${calculation.inputB} = ${calculation.result}</li>
-                       
+                <li>${calculation.inputA} ${calculation.operator} 
+                ${calculation.inputB} = ${calculation.result}</li>       
             `);
         }
     });
@@ -42,70 +41,56 @@ function getCalculationList(){ //no arguments
 function submitCalculation() {
     console.log('in submitCalculation');
     $.ajax({
-      type: 'POST',
-      url: '/calculations',
-      data: {
-        inputA: $('#input-one').val(),
-        inputB: $('#input-two').val(),
-        operator: operator,
-    }
-    }).then(function(response) {
-      console.log('calculations:',response);
-      $('#result').empty();
-      $('#result').append(`Result = ${response.result}`)
-      
-      
-      getCalculationList();
-      resetResultDisplay();
-      clearInputs(); 
-     
+        type: 'POST',
+        url: '/calculations',
+        data: {
+            inputA: $('#input-one').val(),
+            inputB: $('#input-two').val(),
+            operator: operator,
+        }
+    }).then(function (response) {
+        console.log('calculations:', response);
+        $('#result').empty();
+        $('#result').append(`Result = ${response.result}`)
+
+
+        getCalculationList();
+        resetResultDisplay();
+        clearInputs();
+
 
     }); // .catch goes here 
-  }
+}
 
 //when + button is pressed this function will run
-  function addNumbers(){
+function addNumbers() {
     console.log('in addNumbers for + button');
     operator = '+';
-    
-    
-  }
+
+}
 //when - button is clicked this function will run
-  function subtractNumbers(){
+function subtractNumbers() {
     console.log('in subtractNumbers for - button');
     operator = '-';
-  }
+}
 //when * button is clicked this function will run
-  function multiplyNumbers(){
+function multiplyNumbers() {
     console.log('in multiplyNumbers for * button');
     operator = '*';
-  }
+}
 //when / button is clicked this function will run
-  function divideNumbers(){
+function divideNumbers() {
     console.log('in divideNumbers for / button');
     operator = '/';
-  }
+}
 
-  function clearInputs(){
+function clearInputs() {
     console.log('in clearInputs for C button');
     $('#input-one').val('');
     $('#input-two').val('');
     $('#result').text('Result =');
-    
-    
-  }
 
-// //   function resetResultDisplay(){
-// //     console.log('in resetResultDisplay');
-// //     // $('#result').remove()
 
-    
-//     // $('#addition-button').on('click', addNumbers);
+}
 
-//     // if (inputA && inputB === Number) {
-//     //     $('#result').replaceWith(`<h1>Result =</h1>`)
-//     // }
-    
-//   }
 
-  
