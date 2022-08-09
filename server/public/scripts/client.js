@@ -8,7 +8,7 @@ $('#addition-button').on('click', addNumbers);
 
 $('#subtract-button').on('click', subtractNumbers);
 
-$('#multiply-button').on('click', multipyNumbers);
+$('#multiply-button').on('click', multiplyNumbers);
 
 $('#divide-button').on('click', divideNumbers);
 
@@ -39,10 +39,6 @@ function getCalculationList(){ //no arguments
 
 }
 
-let operator = '';
-let inputA = '';
-let inputB = '';
-
 function submitCalculation() {
     console.log('in submitCalculation');
     $.ajax({
@@ -52,13 +48,17 @@ function submitCalculation() {
         inputA: $('#input-one').val(),
         inputB: $('#input-two').val(),
         operator: operator,
-        
     }
     }).then(function(response) {
       console.log('calculations:',response);
-      $('#result').append(` ${response.result}`)
-      //alert(response);
+      $('#result').empty();
+      $('#result').append(`Result = ${response.result}`)
+      
+      
       getCalculationList();
+      resetResultDisplay();
+     
+
     }); // .catch goes here 
   }
 
@@ -67,6 +67,7 @@ function submitCalculation() {
     console.log('in addNumbers for + button');
     operator = '+';
     
+    
   }
 //when - button is clicked this function will run
   function subtractNumbers(){
@@ -74,7 +75,7 @@ function submitCalculation() {
     operator = '-';
   }
 //when * button is clicked this function will run
-  function multipyNumbers(){
+  function multiplyNumbers(){
     console.log('in multiplyNumbers for * button');
     operator = '*';
   }
@@ -89,8 +90,19 @@ function submitCalculation() {
     $('#input-one').val('');
     $('#input-two').val('');
     
-
   }
 
+  function resetResultDisplay(){
+    console.log('in resetResultDisplay');
+    // $('#result').remove()
+
+    
+    // $('#addition-button').on('click', addNumbers);
+
+    // if (inputA && inputB === Number) {
+    //     $('#result').replaceWith(`<h1>Result =</h1>`)
+    // }
+    
+  }
 
   
