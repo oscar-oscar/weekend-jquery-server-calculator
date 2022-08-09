@@ -34,6 +34,9 @@ function getCalculationList() { //no arguments
                 ${calculation.inputB} = ${calculation.result}</li>       
             `);
         }
+    }).catch(function (error) {
+        console.log(error);
+        alert('Something went wrong!')
     });
 
 }
@@ -53,13 +56,12 @@ function submitCalculation() {
         $('#result').empty();
         $('#result').append(`Result = ${response.result}`)
 
-
         getCalculationList();
         resetResultDisplay();
         clearInputs();
 
-
-    }); // .catch goes here 
+    });
+    
 }
 
 //when + button is pressed this function will run
