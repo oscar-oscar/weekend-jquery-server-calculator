@@ -57,6 +57,7 @@ function submitCalculation() {
       
       getCalculationList();
       resetResultDisplay();
+      clearInputs(); 
      
 
     }); // .catch goes here 
@@ -89,20 +90,22 @@ function submitCalculation() {
     console.log('in clearInputs for C button');
     $('#input-one').val('');
     $('#input-two').val('');
+    $('#result').text('Result =');
+    
     
   }
 
-  function resetResultDisplay(){
-    console.log('in resetResultDisplay');
-    // $('#result').remove()
+// //   function resetResultDisplay(){
+// //     console.log('in resetResultDisplay');
+// //     // $('#result').remove()
 
     
-    // $('#addition-button').on('click', addNumbers);
+//     // $('#addition-button').on('click', addNumbers);
 
-    // if (inputA && inputB === Number) {
-    //     $('#result').replaceWith(`<h1>Result =</h1>`)
-    // }
+//     // if (inputA && inputB === Number) {
+//     //     $('#result').replaceWith(`<h1>Result =</h1>`)
+//     // }
     
-  }
+//   }
 
   
