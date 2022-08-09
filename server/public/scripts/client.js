@@ -16,7 +16,7 @@ $('#divide-button').on('click', divideNumbers);
 
 $('#clear-button').on('click', clearInputs);
 
-//getCalculationList();
+getCalculationList();
 
 }
 
@@ -31,7 +31,7 @@ function getCalculationList(){ //no arguments
             let calculation = response[i];
             $('#calculation-history').append(`
               
-            <li>${calculation.inputA}${calculation.operator} ${calculation.inputB}${calculation.calcResult}</li>
+            <li>${calculation.inputA} ${calculation.operator} ${calculation.inputB} = ${calculation.result}</li>
                        
             `);
         }
@@ -51,10 +51,12 @@ function submitCalculation() {
       data: {
         inputA: $('#input-one').val(),
         inputB: $('#input-two').val(),
-        operator: operator
+        operator: operator,
+        
     }
     }).then(function(response) {
       console.log('calculations:',response);
+      $('#result').append(` ${response.result}`)
       //alert(response);
       getCalculationList();
     }); // .catch goes here 

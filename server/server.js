@@ -27,27 +27,31 @@ app.get('/calculations', (req, res) => {
 });
 
 app.post('/calculations', (req, res) => {
-    const calculation= req.body; //body of the request data property in submitCalculation
+    const calculation = req.body; //body of the request data property in submitCalculation
     console.log(req.body);
-    let result = 0;
     
-    if(req.body.operator === '+') {
-        result = calculation.inputA + calculation.inputB;
-      }
-      if(req.body.operator === '-') {
-        result = calculation.inputA - calculation.inputB;
-      }
-      if(req.body.operator === '*') {
-        result = calculation.inputA + calculation.inputB;
-      }
-      if(req.body.operator === '/') {
-        result = calculation.inputA / calculation.inputB;
-      }
+    
+    // if(req.body.operator === '+') {
+    //     result = calculation.inputA + calculation.inputB;
+    //   }
 
+      if(req.body.operator === '+') {
+        calculation.result = Number(calculation.inputA) + Number(calculation.inputB);
+      } // changing this to calculation.result allows us to use it in client.js
+    //   if(req.body.operator === '-') {
+    //     result = calculation.inputA - calculation.inputB;
+    //   }
+    //   if(req.body.operator === '*') {
+    //     result = calculation.inputA + calculation.inputB;
+    //   }
+    //   if(req.body.operator === '/') {
+    //     result = calculation.inputA / calculation.inputB;
+    //   }
 
+    
     calculationList.push(calculation);
     res.send(calculation);
-    res.sendStatus(200); 
+    
     
     
 
